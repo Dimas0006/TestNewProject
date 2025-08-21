@@ -10,27 +10,27 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      # 1️⃣ Забираємо код
+      # 1️⃣ Забираємо код із репо
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Показати версію Xcode
+      # 2️⃣ Показуємо версію Xcode
       - name: Show Xcode version
         run: xcodebuild -version
 
-      # 4️⃣ Build проект
+      # 4️⃣ Build проект (на будь-який доступний iOS симулятор)
       - name: Build project
         run: |
           xcodebuild \
             -project "TestNewProject.xcodeproj" \
             -scheme "TestNewProject" \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.6' \
+            -destination 'platform=iOS Simulator,name=Any iOS Simulator Device' \
             build
 
-      # 5️⃣ Проганяємо тести
+      # 5️⃣ Проганяємо тести (на будь-який доступний iOS симулятор)
       - name: Run tests
         run: |
           xcodebuild test \
             -project "TestNewProject.xcodeproj" \
             -scheme "TestNewProject" \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.6'
+            -destination 'platform=iOS Simulator,name=Any iOS Simulator Device'
