@@ -10,30 +10,28 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      # 1️⃣ Забираємо код із репо
+      # 1️⃣ Забрати код із репо
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Показуємо версію Xcode
+      # 2️⃣ Показати версію Xcode
       - name: Show Xcode version
         run: xcodebuild -version
 
-      # 3️⃣ Збираємо проект (без UI тестів)
+      # 3️⃣ Збірка проекту
       - name: Build project
         run: |
           xcodebuild \
             -project "TestNewProject.xcodeproj" \
             -scheme "TestNewProject" \
-            -sdk iphonesimulator \
             -configuration Debug \
             clean build
 
-      # 4️⃣ Проганяємо тільки unit-тести
+      # 4️⃣ Проганяємо unit-тести (без симулятора)
       - name: Run unit tests
         run: |
           xcodebuild test \
             -project "TestNewProject.xcodeproj" \
             -scheme "TestNewProject" \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.6' \
-            -only-testing:TestNewProjectTests
+            -configuration Debug \
+            -enableCodeCoverage YES
