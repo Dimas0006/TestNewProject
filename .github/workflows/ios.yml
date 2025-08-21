@@ -10,26 +10,27 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      # 1️⃣ Забираємо код
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2️⃣ Показати версію Xcode
       - name: Show Xcode version
         run: xcodebuild -version
 
-      - name: Show available simulators
-        run: xcrun simctl list devices
-
+      # 4️⃣ Build проект
       - name: Build project
         run: |
           xcodebuild \
             -project "TestNewProject.xcodeproj" \
             -scheme "TestNewProject" \
-            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.6' \
             build
 
+      # 5️⃣ Проганяємо тести
       - name: Run tests
         run: |
           xcodebuild test \
             -project "TestNewProject.xcodeproj" \
             -scheme "TestNewProject" \
-            -destination 'platform=iOS Simulator,name=iPhone 15'
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.6'
