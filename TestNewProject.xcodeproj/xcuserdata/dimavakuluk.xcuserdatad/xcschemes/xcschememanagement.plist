@@ -6,8 +6,28 @@
 	<dict>
 		<key>TestNewProject.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>E0E1CCB12E576FD90090C6EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0E1CCBE2E576FDA0090C6EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0E1CCC82E576FDA0090C6EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
