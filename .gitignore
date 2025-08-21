@@ -1,0 +1,17 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+# SwiftPM
+.swiftpm/
+.build/
+# CocoaPods
+Pods/
+Podfile.lock
+# Fastlane
+fastlane/report.xml
+fastlane/test_output/
+# Misc
+.DS_Store
