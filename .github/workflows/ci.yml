@@ -1,0 +1,31 @@
+# .github/workflows/ci.yml
+
+name: Swift CI/CD Pipeline # Назва вашого пайплайну
+
+# Визначаємо події, які запускають робочий процес
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Визначаємо єдине завдання (job) для нашого робочого процесу
+jobs:
+  build-and-test:
+    name: Збірка та тестування на macOS
+    runs-on: macos-latest # Використовуємо віртуальну машину macOS
+
+    steps:
+      # Крок 1: Отримання коду з репозиторію
+      - name: Отримання коду
+        uses: actions/checkout@v4
+
+      # Крок 2: Збірка та тестування Swift-проєкту
+      - name: Збірка та тестування за допомогою Xcode
+        run: |
+          xcodebuild clean build test \
+            -project "TestNewProject.xcodeproj" \
+            -scheme "TestNewProject" \
+            -destination "platform=iOS Simulator,name=iPhone 15"
