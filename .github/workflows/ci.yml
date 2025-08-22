@@ -12,16 +12,23 @@ on:
 
 jobs:
   build-and-test:
-    name: Збірка та тестування на macOS 14
-    runs-on: macos-14 # Змінено на macos-14
+    name: Збірка та тестування
+    runs-on: macos-latest
 
     steps:
       - name: Отримання коду
         uses: actions/checkout@v4
 
+      # Крок 2: Вибір версії Xcode
+      - name: Вибрати Xcode 16.0
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.0.0'
+
+      # Крок 3: Збірка та тестування
       - name: Збірка та тестування за допомогою Xcode
         run: |
           xcodebuild clean build test \
             -project "TestNewProject.xcodeproj" \
             -scheme "TestNewProject" \
-            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=17.5"
+            -destination "platform=iOS Simulator,name=iPhone 15"
