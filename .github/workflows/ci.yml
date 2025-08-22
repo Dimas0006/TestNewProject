@@ -12,8 +12,8 @@ on:
 
 jobs:
   build-and-test:
-    name: Збірка та тестування на macOS
-    runs-on: macos-latest
+    name: Збірка та тестування на macOS 14
+    runs-on: macos-14 # Змінено на macos-14
 
     steps:
       - name: Отримання коду
